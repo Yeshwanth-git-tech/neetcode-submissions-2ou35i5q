@@ -1,0 +1,31 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        # ss = ""
+        # for c in s:
+        #     if c.isalnum():
+        #         #dont forget to lowercase
+        #         ss+=c.lower()
+        # return ss == ss[::-1]
+
+        l = 0
+        r = len(s)-1
+        while l < r:
+            while l < r and not self.alphanum(s[l]):
+                l +=1
+            while r > l and not self.alphanum(s[r]):
+                r -=1
+            #base conditon    
+            if s[l].lower() != s[r].lower():
+                return False
+            l+=1
+            r-=1
+        return True
+            
+
+    def alphanum(self , c):
+        return((ord("A")<= ord(c)<= ord("Z"))
+            or(ord("a")<= ord(c)<= ord("z")) 
+            or (ord("0")<= ord(c)<= ord("9")))
+
+
+        
